@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffe3ec">
+<title>For Lara ♡</title>
+<meta name="description" content="A little gift, made with love, for Lara.">
+<!-- Heart emoji as the browser tab icon (no image file needed) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>">
+
+<style>
+/* =========================================================
+   COLORS: change these to restyle the whole site
+   ========================================================= */
+:root{
+  --blush:#fff0f5;
+  --petal:#ffd9e6;
+  --rose:#e8648c;
+  --deep-rose:#b83a68;
+  --ink:#5a2340;          /* main text, strong contrast on blush */
+  --ink-soft:#7a3d58;
+  --white:#ffffff;
+  --script:"Snell Roundhand","Apple Chancery","Brush Script MT","Segoe Script",cursive;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--serif);color:var(--ink);line-height:1.7;font-size:1.08rem;
+  background:linear-gradient(180deg,#fff0f5 0%,#ffe3ec 45%,#fff0f5 100%);
+  background-attachment:fixed;overflow-x:hidden;
+  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);
+}
+h1,h2{font-family:var(--script);font-weight:400;color:var(--deep-rose);line-height:1.15}
+a:focus-visible,button:focus-visible{outline:3px solid var(--deep-rose);outline-offset:3px}
+
+/* ---------- Floating hearts + sparkles layer ---------- */
+#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.heart{
+  position:absolute;bottom:-40px;color:var(--rose);opacity:0;
+  text-shadow:0 0 12px rgba(232,100,140,.7),0 0 26px rgba(255,170,200,.8);
+  animation:rise linear forwards;
+}
+@keyframes rise{
+  0%{transform:translateY(0) translateX(0) scale(.7);opacity:0}
+  12%{opacity:.85}
+  50%{transform:translateY(-55vh) translateX(18px) scale(1)}
+  100%{transform:translateY(-115vh) translateX(-14px) scale(1.1);opacity:0}
+}
+.sparkle{
+  position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;
+  box-shadow:0 0 8px 3px rgba(255,255,255,.95),0 0 14px 5px rgba(255,160,195,.6);
+  animation:twinkle 3s ease-in-out infinite;
+}
+@keyframes twinkle{0%,100%{opacity:.1;transform:scale(.5)}50%{opacity:1;transform:scale(1.2)}}
+
+/* ---------- 1. Opening screen ---------- */
+.hero{
+  min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:2rem 1.5rem;position:relative;
+  background:
+    radial-gradient(circle at 50% 38%,rgba(255,255,255,.95) 0,rgba(255,255,255,0) 55%),
+    linear-gradient(180deg,#ffd9e6,#fff0f5);
+}
+.big-heart{
+  font-size:4.2rem;color:var(--rose);line-height:1;margin-bottom:1rem;
+  text-shadow:0 0 18px rgba(232,100,140,.65),0 0 40px rgba(255,150,190,.7);
+  animation:beat 2.4s ease-in-out infinite;
+}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.14)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
+.hero h1{font-size:clamp(3.2rem,15vw,5.5rem);text-shadow:0 2px 20px rgba(255,255,255,.9)}
+.hero .sub{max-width:20rem;margin:1rem auto 2.2rem;color:var(--ink-soft);font-style:italic}
+
+.btn{
+  font:inherit;font-size:1.08rem;cursor:pointer;border:0;border-radius:999px;
+  padding:.95rem 2.1rem;min-height:48px;color:#fff;
+  background:linear-gradient(135deg,#e8648c,#b83a68);
+  box-shadow:0 8px 24px rgba(184,58,104,.35),0 0 22px rgba(255,150,190,.55);
+  transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent;
+}
+.btn:active{transform:scale(.96)}
+.btn.soft{
+  color:var(--deep-rose);background:var(--white);border:2px solid var(--rose);
+  box-shadow:0 6px 18px rgba(232,100,140,.2);
+}
+
+/* ---------- Main content ---------- */
+main[hidden]{display:none}
+section{padding:4.5rem 1.4rem;max-width:42rem;margin:0 auto;position:relative}
+section h2{font-size:clamp(2.3rem,10vw,3.2rem);text-align:center;margin-bottom:1.6rem}
+
+/* ---------- 2. Letter ---------- */
+.letter{
+  background:linear-gradient(180deg,#fff 0%,#fff7fa 100%);
+  border-radius:22px;padding:2rem 1.5rem;
+  box-shadow:0 14px 40px rgba(184,58,104,.18),inset 0 0 0 1px rgba(232,100,140,.18);
+}
+.letter .greet{font-family:var(--script);font-size:2.2rem;color:var(--deep-rose);margin-bottom:.8rem}
+.letter p{margin-bottom:1.1rem}
+.letter .sign{font-family:var(--script);font-size:1.9rem;color:var(--deep-rose);text-align:right;margin:1.4rem 0 0}
+
+/* ---------- 3. Gallery ---------- */
+.gallery{display:grid;gap:1.4rem;grid-template-columns:1fr}
+.frame{
+  background:#fff;padding:.8rem .8rem 1rem;border-radius:16px;
+  box-shadow:0 12px 30px rgba(184,58,104,.2);
+}
+.frame:nth-child(odd){transform:rotate(-1.4deg)}
+.frame:nth-child(even){transform:rotate(1.4deg)}
+.photo{
+  position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#ffd9e6,#ffeaf1);
+  color:var(--ink-soft);font-size:2.4rem;
+}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame figcaption{text-align:center;padding-top:.7rem;font-style:italic;color:var(--ink-soft);font-size:1rem}
+.note{text-align:center;color:var(--ink-soft);font-size:.95rem;margin-top:1.6rem;font-style:italic}
+
+/* ---------- 4-5. The question ---------- */
+.ask{text-align:center}
+.ask .q2{font-size:1.2rem;max-width:24rem;margin:0 auto 2rem}
+.choices{display:flex;flex-direction:column;gap:1rem;align-items:center}
+.choices .btn{width:100%;max-width:18rem}
+#reply{
+  margin:1.8rem auto 0;max-width:25rem;padding:1.3rem 1.4rem;border-radius:20px;
+  background:#fff;box-shadow:0 10px 30px rgba(184,58,104,.2);
+  border:1px solid rgba(232,100,140,.3);
+}
+#reply[hidden]{display:none}
+#reply .reply-title{font-family:var(--script);font-size:1.9rem;color:var(--deep-rose);display:block;margin-bottom:.3rem}
+
+/* ---------- 6. Final ---------- */
+.final{text-align:center;padding-bottom:6rem}
+.final p{max-width:26rem;margin:0 auto 1rem}
+.final .end-heart{font-size:3rem;color:var(--rose);text-shadow:0 0 18px rgba(232,100,140,.6);animation:beat 2.4s ease-in-out infinite}
+
+/* ---------- Accessibility: reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  #fx{display:none}
+}
+</style>
+</head>
+
+<body>
+<div id="fx" aria-hidden="true"></div>
+
+<!-- =========================================================
+     1. OPENING SCREEN
+     Edit the title and subtitle text below.
+     ========================================================= -->
+<header class="hero" id="top">
+  <div class="big-heart" aria-hidden="true">♥</div>
+  <h1>For Lara ♡</h1>
+  <p class="sub">A small corner of the internet, made just for you.</p>
+  <button class="btn" id="openBtn" type="button">Open My Heart</button>
+</header>
+
+<main id="content" hidden>
+
+  <!-- =======================================================
+       2. THE LETTER: edit the paragraphs freely
+       ======================================================= -->
+  <section id="letter" aria-labelledby="letterTitle">
+    <h2 id="letterTitle">A Letter</h2>
+    <article class="letter">
+      <p class="greet">Dear Lara,</p>
+      <p>I wanted to write you something real, not something rushed in a text. So here it is, slowly and honestly.</p>
+      <p>You have a way of making ordinary moments feel softer. Your smile, your kindness, the way you listen — they matter to me more than I know how to say out loud.</p>
+      <p>Thank you for the time you give me, for every laugh, and for being exactly yourself around me. It means a lot, and I don't take it for granted.</p>
+      <p>My hope is simple: to keep making good memories with you, at whatever pace feels right for you. No pressure, no rush. Just warmth, honesty, and a lot of care.</p>
+      <p>I'm grateful you exist, and I'm grateful our paths crossed.</p>
+      <p class="sign">With all my heart ♡</p>
+    </article>
+  </section>
+
+  <!-- =======================================================
+       3. OUR LITTLE MEMORIES (photo gallery)
+
+       HOW TO ADD YOUR PHOTOS:
+       1. Put your photo files in the SAME folder as index.html
+          (on GitHub: Add file > Upload files).
+       2. Name them exactly: photo1.jpg, photo2.jpg, photo3.jpg
+          OR change the src="..." below to match your file names
+          (for example src="us-at-the-beach.jpg").
+       3. Edit the caption inside <figcaption> to anything you like.
+       4. If a file is missing, the soft pink placeholder is shown
+          instead, so nothing ever looks broken.
+       To add a 4th photo, copy one whole <figure>...</figure> block.
+       ======================================================= -->
+  <section id="memories" aria-labelledby="memTitle">
+    <h2 id="memTitle">Our Little Memories</h2>
+    <div class="gallery">
+      <figure class="frame">
+        <div class="photo"><span aria-hidden="true">🌸</span>
+          <img src="photo1.jpg" alt="A memory of Lara and me" loading="lazy" onerror="this.remove()">
+        </div>
+        <figcaption>The day I knew I wanted to know you better</figcaption>
+      </figure>
+      <figure class="frame">
+        <div class="photo"><span aria-hidden="true">💗</span>
+          <img src="photo2.jpg" alt="Another memory of Lara and me" loading="lazy" onerror="this.remove()">
+        </div>
+        <figcaption>A laugh I still think about</figcaption>
+      </figure>
+      <figure class="frame">
+        <div class="photo"><span aria-hidden="true">🌷</span>
+          <img src="photo3.jpg" alt="A third memory of Lara and me" loading="lazy" onerror="this.remove()">
+        </div>
+        <figcaption>And many more to come</figcaption>
+      </figure>
+    </div>
+    <p class="note">Photos: replace photo1.jpg, photo2.jpg and photo3.jpg in this folder.</p>
+  </section>
+
+  <!-- =======================================================
+       4 + 5. THE QUESTION (nothing is sent anywhere)
+       Edit the two reply messages in the <script> at the bottom.
+       ======================================================= -->
+  <section id="ask" class="ask" aria-labelledby="askTitle">
+    <h2 id="askTitle">Can I ask you something?</h2>
+    <p class="q2">Would you let me keep getting to know you, one little memory at a time? ♡</p>
+    <div class="choices">
+      <button class="btn" type="button" data-answer="yes">Yes ♡</button>
+      <button class="btn soft" type="button" data-answer="maybe">Let’s see 🌷</button>
+    </div>
+    <div id="reply" role="status" aria-live="polite" hidden>
+      <span class="reply-title" id="replyTitle"></span>
+      <span id="replyText"></span>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       6. FINAL MESSAGE
+       ======================================================= -->
+  <section id="final" class="final" aria-labelledby="finalTitle">
+    <div class="end-heart" aria-hidden="true">♥</div>
+    <h2 id="finalTitle">Thank you, Lara</h2>
+    <p>For reading this, for being you, and for being a bright spot in my days.</p>
+    <p>However things unfold, I hope this made you smile.</p>
+    <p><strong>Always yours, with care ♡</strong></p>
+  </section>
+
+</main>
+
+<script>
+/* =========================================================
+   EASY SETTINGS: edit the text between the quotes
+   ========================================================= */
+var REPLIES = {
+  yes: {
+    title: "You just made my whole day ♡",
+    text: "Thank you, Lara. I'll treasure every little memory with you, and I'll always go at a pace that feels good to you."
+  },
+  maybe: {
+    title: "Of course, take all the time you need 🌷",
+    text: "There's no rush and no pressure at all. I'm happy just to be around you, and I'm glad you read this."
+  }
+};
+
+/* ---------- Everything below is the magic. No need to edit. ---------- */
+(function () {
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fx = document.getElementById("fx");
+  var timer = null;
+
+  function spawnHeart(big) {
+    if (reduce) return;
+    var h = document.createElement("span");
+    h.className = "heart";
+    h.textContent = Math.random() > 0.3 ? "♥" : "♡";
+    h.style.left = (Math.random() * 96) + "%";
+    h.style.fontSize = ((big ? 18 : 12) + Math.random() * (big ? 26 : 16)) + "px";
+    h.style.animationDuration = (6 + Math.random() * 6) + "s";
+    fx.appendChild(h);
+    setTimeout(function () { if (h.parentNode) h.parentNode.removeChild(h); }, 13000);
+  }
+
+  function burst(n) {
+    for (var i = 0; i < n; i++) {
+      (function (d) { setTimeout(function () { spawnHeart(true); }, d); })(i * 90);
+    }
+  }
+
+  // Sparkles scattered softly in the background
+  if (!reduce) {
+    for (var s = 0; s < 14; s++) {
+      var sp = document.createElement("span");
+      sp.className = "sparkle";
+      sp.style.left = (Math.random() * 98) + "%";
+      sp.style.top = (Math.random() * 98) + "%";
+      sp.style.animationDelay = (Math.random() * 3) + "s";
+      sp.style.animationDuration = (2.5 + Math.random() * 2.5) + "s";
+      fx.appendChild(sp);
+    }
+    // A gentle, steady trickle of floating hearts
+    timer = setInterval(function () {
+      if (!document.hidden) spawnHeart(false);
+    }, 1100);
+  }
+
+  // "Open My Heart" button
+  var content = document.getElementById("content");
+  document.getElementById("openBtn").addEventListener("click", function () {
+    content.hidden = false;
+    burst(14);
+    var target = document.getElementById("letter");
+    target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  });
+
+  // Response buttons (nothing is stored or sent anywhere)
+  var reply = document.getElementById("reply");
+  var buttons = document.querySelectorAll("[data-answer]");
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function () {
+      var r = REPLIES[this.getAttribute("data-answer")];
+      if (!r) return;
+      document.getElementById("replyTitle").textContent = r.title;
+      document.getElementById("replyText").textContent = r.text;
+      reply.hidden = false;
+      burst(20);
+      reply.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    });
+  }
+})();
+</script>
+</body>
+</html>
